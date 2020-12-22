@@ -36,6 +36,9 @@ class User(AbstractBaseUser):
 
     def save(self, *args, **kwargs):
         self.username = self.username.lower()
-        self.first_name = self.first_name.strip().lower()
-        self.last_name = self.last_name.strip().lower()
+        self.is_active = True
+        if(self.first_name):
+            self.first_name = self.first_name.strip().lower()
+        if(self.last_name):
+            self.last_name = self.last_name.strip().lower()
         return super(User, self).save(*args, **kwargs)

@@ -37,11 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'knox',
+    'authentication',
+    'django_rest_passwordreset',
     'users',
     'events',
     'profiles',
     'roles',
     'subscriptions',
+    'auditorium',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -76,6 +80,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mbvs_events.wsgi.application'
 
+# Authetication
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+    ]
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
